@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>IBM Planning Analytics Workspace UI API</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -196,25 +196,22 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen-a1ce949a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo-1e815a84.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -225,24 +222,63 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#installation" class="toc-h1 toc-link" data-title="Installation">Installation</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#running-the-application" class="toc-h1 toc-link" data-title="Running the application">Running the application</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#testing-the-application" class="toc-h2 toc-link" data-title="Testing the application">Testing the application</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#client-communication" class="toc-h1 toc-link" data-title="Client communication">Client communication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#purpose" class="toc-h2 toc-link" data-title="Purpose">Purpose</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sending-messages" class="toc-h1 toc-link" data-title="Sending messages">Sending messages</a>
+          </li>
+          <li>
+            <a href="#receiving-messages" class="toc-h1 toc-link" data-title="Receiving messages">Receiving messages</a>
+          </li>
+          <li>
+            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#syntax" class="toc-h2 toc-link" data-title="Syntax">Syntax</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#parameters" class="toc-h1 toc-link" data-title="Parameters">Parameters</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#planning-analytics-workspace-books" class="toc-h2 toc-link" data-title="Planning Analytics Workspace books">Planning Analytics Workspace books</a>
+                  </li>
+                  <li>
+                    <a href="#planning-analytics-workspace-views" class="toc-h2 toc-link" data-title="Planning Analytics Workspace views">Planning Analytics Workspace views</a>
+                  </li>
+                  <li>
+                    <a href="#tm1-legacy-views" class="toc-h2 toc-link" data-title="TM1 Legacy views">TM1 Legacy views</a>
+                  </li>
+                  <li>
+                    <a href="#drill-through-views" class="toc-h2 toc-link" data-title="Drill through views">Drill through views</a>
+                  </li>
+                  <li>
+                    <a href="#dimension-editor" class="toc-h2 toc-link" data-title="Dimension editor">Dimension editor</a>
+                  </li>
+                  <li>
+                    <a href="#set-editor" class="toc-h2 toc-link" data-title="Set editor">Set editor</a>
+                  </li>
+                  <li>
+                    <a href="#websheet" class="toc-h2 toc-link" data-title="Websheet">Websheet</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -254,250 +290,568 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>The IBM Planning Analytics Workspace UI API is used for returning generated Planning Analytics Workspace assets, such as cube views, the dimension editor, the set editor, TM1 views, etc.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>The Planning Analytics Workspace UI API is developed and built using the <a href='https://github.com/nestjs/nest'>Nest</a> framework.</p>
+<h1 id='installation'>Installation</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>To install, use this code:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># install 3rd party dependencies</span>
+<span class="gp">$ </span>npm install
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="c"># install additional build tools</span>
+<span class="c"># run this if you get "cannot find tsc command" error</span>
+<span class="gp">$ </span>npm install -g typescript 
+</code></pre>
+<p>Install the Planning Analytics Workspace UI API by running these code examples in terminal or commandline.</p>
+<h1 id='running-the-application'>Running the application</h1><pre class="highlight shell tab-shell"><code><span class="c"># development</span>
+<span class="gp">$ </span>npm run start
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="c"># watch mode</span>
+<span class="gp">$ </span>npm run start-dev
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="c"># build</span>
+<span class="gp">$ </span>npm run build
+
+<span class="c"># production mode</span>
+<span class="gp">$ </span>npm run start-prod
+</code></pre>
+<p>This application will read config values from the environment variables. What I usually do is set my dev env variables in <code>config/set-dev-variables.sh</code> and then run the script via source <code>config/set-dev-variables.sh</code> before running the below to have it run under the specified config variables. Check the <a href='https://github.ibm.com/PlanningAnalytics/paw-ui-api/blob/master/server/modules/config/config.service.ts'>config service</a> to see all available settings.</p>
+<h2 id='testing-the-application'>Testing the application</h2><pre class="highlight shell tab-shell"><code><span class="c"># unit tests</span>
+<span class="gp">$ </span>npm run <span class="nb">test</span>
+
+<span class="c"># e2e tests</span>
+<span class="gp">$ </span>npm run <span class="nb">test</span>:e2e
+
+<span class="c"># test coverage</span>
+<span class="gp">$ </span>npm run <span class="nb">test</span>:cov
+</code></pre>
+<p>Use these commands to test the application.</p>
+<h1 id='client-communication'>Client communication</h1>
+<p>This section describes how to safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing our UI widget.</p>
+<h2 id='purpose'>Purpose</h2>
+<p>In order for the client to be able to issue commands or respond to specific events regarding to our UI widget, which would usually be contained inside an iframe. The approach here documents a safe method to do this regardless if it is same-origin or cross-origin.</p>
+
+<p>Sending and receiving messages from the client are accomplished using the <code>Window.postMessage API</code>. <a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage'>Here</a> is a link that documents the specifics.</p>
+
+<p>In the code examples shown below, assume this API service is hosted under <code>http://localhost:8080/ui</code>.</p>
+<h1 id='sending-messages'>Sending messages</h1>
+<blockquote>
+<p>Examples:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>var iframe <span class="o">=</span> document.getElementByd<span class="o">(</span><span class="s1">'iframe_id_here'</span><span class="o">)</span>;
+// check <span class="k">if </span>widget is fully loaded before sending message
+// isWidgetReady is <span class="nb">set </span>to <span class="nb">true </span>when client receives the <span class="s2">"onWidgetLoaded"</span> message
+<span class="k">if</span><span class="o">(</span>isWidgetReady <span class="o">&amp;&amp;</span> iframe.contentWindow<span class="o">)</span> <span class="o">{</span>
+    iframe.contentWindow.postMessage<span class="o">({</span>
+        <span class="nb">type</span>: <span class="s2">"trigger"</span>,
+        eventName: <span class="s2">"tm1mdv:Compute"</span>,
+        eventPayload: <span class="o">{</span>
+            userCommand: <span class="nb">true</span>
+        <span class="o">}</span>
+    <span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Subscribes to the commands:completed event under the tm1mdv namespace. Once subscribed, the client will receive messages whenever that event occurs</p>
 </blockquote>
+<pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
+    <span class="nb">type</span>: <span class="s2">"subscribe"</span>,
+    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
+    eventPayload: <span class="o">{</span>
+        name: <span class="s2">"first subscription"</span>
+    <span class="o">}</span>
+<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+</code></pre>
+<blockquote>
+<p>Unsubscribes to the event above.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
+    <span class="nb">type</span>: <span class="s2">"unsubscribe"</span>,
+    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
+    eventPayload: <span class="o">{</span>
+        name: <span class="s2">"first subscription"</span>
+    <span class="o">}</span>
+<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+</code></pre>
+<p>Here is a list of parameters you may pass in:</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>Yes</td>
+<td>The type of message to send.</td>
+<td>- <code>trigger</code> <br> - <code>subscribe</code></td>
+</tr>
+<tr>
+<td>eventName</td>
+<td>Yes</td>
+<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>. The following namespaces are supported: <code>tm1mdv</code>, <code>glass</code></td>
+<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
+</tr>
+<tr>
+<td>eventPayload</td>
+<td>n/a</td>
+<td>The payload body accompanying the message. The contents and whether or not this parameter is neccessary depends on the type of message.</td>
+<td></td>
+</tr>
+</tbody></table>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Below lists all supported messages the client can send:</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<table><thead>
+<tr>
+<th>Message type</th>
+<th>Description</th>
+<th>eventPayload</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trigger</td>
+<td>Attempts to raise a particular event. Only emits the event for supported namespaces</td>
+<td>Depends on the event. This would contain information needed for the event execution.</td>
+</tr>
+<tr>
+<td>subscribe</td>
+<td>Subscribes to a particular event. Only events in the supported namespaces may be subscribed. Once subscribed, the UI widget will send a message of type <code>on</code> back to the client every time the <code>eventName</code> event occurs.</td>
+<td><code>name</code>: String (Optional). Used to identify subscriptions. <br> - If no name is given, you cannot unsubscribe to the event. <br> - If given name has already been registered, no event is subscribed.</td>
+</tr>
+<tr>
+<td>unsubscribe</td>
+<td>Unsubscribes to a particular event. Only subscriptions with a name can be unsubscribed.</td>
+<td><code>name</code>: String (Required). Used to identify subscriptions. <br> - If no name is given or if there were no previous subscriptions under that name, nothing happens.</td>
+</tr>
+</tbody></table>
+<h1 id='receiving-messages'>Receiving messages</h1>
+<blockquote>
+<p>Examples:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>var widgetReady <span class="o">=</span> <span class="nb">false</span>;
+window.addEventListener<span class="o">(</span><span class="s2">"message"</span>, <span class="k">function</span><span class="o">(</span>event<span class="o">)</span> <span class="o">{</span>
+    // only accept messages sent from the UI widget
+    <span class="k">if</span><span class="o">(</span>event.origin <span class="o">==</span> <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span> <span class="o">{</span>
+        switch<span class="o">(</span>event.data.type<span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="s1">'onWidgetLoaded'</span>:
+                widgetReady <span class="o">=</span> <span class="nb">true</span>;
+                <span class="nb">break</span>;
+            <span class="k">case</span> <span class="s1">'on'</span>:
+                handleEvent<span class="o">(</span>event.data.eventName, event.data.eventPayload<span class="p">)</span>;
+                <span class="nb">break</span>;
+            default:
+                <span class="nb">break</span>;
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">})</span>;
+</code></pre>
+<blockquote>
+<p>Receiving an <code>on</code> message that indicated the <code>tm1mdv:commands:completed</code> event had occured</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="k">function </span>handleEvent<span class="o">(</span>eventName, eventPayload<span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span>eventName <span class="o">==</span> <span class="s2">"tm1mdv:commands:completed"</span><span class="o">)</span> <span class="o">{</span>
+        // first subscription was just notified!
+        alert<span class="o">(</span>eventPayload.name + <span class="s1">' was just notified!'</span><span class="o">)</span>;
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>Yes</td>
+<td>The type of message recieved.</td>
+<td>- <code>onWidget:paded</code> <br> - <code>on</code></td>
+</tr>
+<tr>
+<td>eventName</td>
+<td>Yes</td>
+<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>.</td>
+<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
+</tr>
+<tr>
+<td>eventPayload</td>
+<td>n/a</td>
+<td>The payload body accompanying the message. The contents depends on the type of message.</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>Below lists all supported messages the client can send:</p>
+
+<table><thead>
+<tr>
+<th>Message type</th>
+<th>Description</th>
+<th>eventPayload</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>onWidgetLoaded</td>
+<td>Used to notify to the client that the UI widget has been fully rendered and can safely be interacted with.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>on</td>
+<td>Used to notify to the client that one of their subscribed events has occurred.</td>
+<td>This will contain more information about the context of the event that occurred.</td>
+</tr>
+</tbody></table>
+<h1 id='endpoints'>Endpoints</h1>
+<p>An endpoint returns an html page that renders a PAW book, a PAW view, a TM1 legacy view, a drill through view, a dimension editor, a set editor, or websheet.</p>
+<h2 id='syntax'>Syntax</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>localhost:8080/ui?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
+</code></pre>
+<p>Method: <code>GET</code></p>
+
+<p>URL Format: <code>/?p1=a1&amp;p2=a2&amp;...#f1=a3&amp;f2=a4&amp;...</code></p>
+
+<ul>
+<li>Query parameters: <code>?p1=a1&amp;p2=a2&amp;...</code></li>
+<li>Fragment parameters: <code>#f1=a3&amp;f2=a4&amp;...</code></li>
+</ul>
+
+<p>All parameters can be passed as either a query or fragment parameter (they would be processed the same way). This allows for flexibility on how you want to structure your request. So the following requests are all equivalent:
+* <code>/?type=cube-viewer&amp;server=Planning%20Sample&amp;cube=plan_BudgetPlan</code>
+* <code>/#type=cube-viewer&amp;server=Planning%20Sample&amp;cube=plan_BudgetPlan</code>
+* <code>/?type=cube-viewer#server=Planning%20Sample&amp;cube=plan_BudgetPlan</code></p>
+
+<p>Returns:</p>
+
+<ul>
+<li><code>200 OK</code> on success. Response body contains an HTML page that can be put into an iframe. This page will automatically load the requested widget.</li>
+</ul>
+<h1 id='parameters'>Parameters</h1>
+<p>The <code>type</code> (alias <code>Type</code>) parameter determines what kind of widget or asset to render. Each type requires a different set of parameters. See below for a case-by-case list. In the example URLs given below, we assume the service is located at <code>http://localhost:8080/ui</code>.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+All parameters are case sensitive.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
+<h2 id='planning-analytics-workspace-books'>Planning Analytics Workspace books</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>book&amp;path<span class="o">=</span>/shared/myBook1
+</code></pre>
+<p>The follow parameters apply to <code>type=book</code>.</p>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Parameter name</th>
+<th>Required</th>
 <th>Description</th>
+<th>Examples</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>type</td>
+<td>Yes</td>
+<td>The type of widget to render (alias <code>Type</code>).</td>
+<td>- <code>type=book</code></td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>path</td>
+<td>Yes</td>
+<td>The absolute location of the asset</td>
+<td>- <code>path=/shared/myBook</code> <br> - <code>path=/shared/path/to/my/book/myBook</code> <br> - <code>path=/personal/path/to/my/book/myBook</code></td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<h2 id='planning-analytics-workspace-views'>Planning Analytics Workspace views</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
+</code></pre>
+<p>The follow parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Parameter name</th>
+<th>Required</th>
 <th>Description</th>
+<th>Examples</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>type</td>
+<td>Yes</td>
+<td>The type of widget to render (alias <code>Type</code>).</td>
+<td>- <code>type=cube-viewer</code></td>
+</tr>
+<tr>
+<td>path</td>
+<td>Yes</td>
+<td>The absolute location of the asset</td>
+<td>- <code>path=/shared/myView</code> <br> - <code>path=/shared/path/to/my/view/myView</code></td>
+</tr>
+<tr>
+<td>server</td>
+<td>No</td>
+<td>Overrides the TM1 server where view is located. This is useful if you have two different TM1 servers with the same cube views, and have a paw view for one TM1 server, but want to use the other.</td>
+<td>- <code>server=Planning_Sample2</code></td>
+</tr>
+<tr>
+<td>toolbar</td>
+<td>No</td>
+<td>See General Cube View section below for more detail.</td>
+<td>- <code>toolbar=all</code></td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<h2 id='tm1-legacy-views'>TM1 Legacy views</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>cube-viewer&amp;path<span class="o">=</span>/shared/ABC/KamView
+</code></pre>
+<p>The follow parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Parameter name</th>
+<th>Required</th>
 <th>Description</th>
+<th>Examples</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>type</td>
+<td>Yes</td>
+<td>The type of widget to render (alias <code>Type</code>).</td>
+<td>- <code>type=cube-viewer</code></td>
+</tr>
+<tr>
+<td>server</td>
+<td>Yes</td>
+<td>Name of Tm1 server where the view is located.</td>
+<td>- <code>server=SData</code> <br> - <code>server=Planning%20Sample</code></td>
+</tr>
+<tr>
+<td>cube</td>
+<td>Yes</td>
+<td>Name of cube where view is located. This cube must exist inside the specified <code>server</code>.</td>
+<td>- <code>cube=Input%20Cube</code> <br> - <code>cube=plan_BudgetPlan</code></td>
+</tr>
+<tr>
+<td>view</td>
+<td>No</td>
+<td>Name of the view. This view must exist inside the specified <code>cube</code>. The default view is used if <code>view</code> is not defined.</td>
+<td>- <code>view=CPView</code> <br> - <code>view=Budget%20Input%20Detailed</code></td>
+</tr>
+<tr>
+<td>private</td>
+<td>No</td>
+<td>Whether or not the view is private. Can be either <code>true</code> or <code>false</code>. Defaults to <code>false</code>.</td>
+<td>- <code>private=true</code> <br> - <code>private=false</code></td>
+</tr>
+<tr>
+<td>toolbar</td>
+<td>No</td>
+<td>A comma delimited string of action names to display in the toolbar. The <code>all</code> preset denotes all actions. Defaults to <code>all</code> if this paramter is not provided. Supported actions are as follows: <br>    - <code>export</code> <br>    - <code>save</code> <br>    - <code>swapAxes</code> <br>    - <code>suppressZero</code> <br>    - <code>refresh</code> <br>    - <code>sandbox</code> <br>    - <code>toggleOverview</code> <br> The order in which the actions are shown in the toolbar is the same order specified in this parameter.</td>
+<td>- <code>toolbar=all</code> <br> - <code>toolbar=suppressZero,sandbox,refresh,save</code></td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+For PAX environments, the `toolbar` paramter needs to be manually set in order to have the `reports` action as the `all` preset does not contain it (to avoid potential confusion in non-PAX environments). For example: `toolbar=reports,save,swapAxes,refresh`.
 </aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<h2 id='drill-through-views'>Drill through views</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>drill-through&amp;server<span class="o">=</span>Planning%20Sample&amp;dtCube<span class="o">=</span>plan_BudgetPlan&amp;dtType<span class="o">=</span>Cube&amp;dtScript<span class="o">=</span>Budget_line_entry&amp;dtCellCoord<span class="o">=</span>FY%202004%20Budget,Total%20Business%20Unit,Total%20Organization,Sales,local%20exchange%20rate,Account%20Level%20Input,Q1-2004
+</code></pre>
+<p>The follow parameters apply to <code>type=drill-through</code>.</p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+<th>Examples</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>type</td>
+<td>Yes</td>
+<td>The type of widget to render (alias <code>Type</code>).</td>
+<td>- <code>type=drill-through</code></td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>server</td>
+<td>Yes</td>
+<td>TName of TM1 server where cube is located</td>
+<td>- <code>server=SData</code> <br> - <code>server=Planning%20Sample</code></td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>dtCube</td>
+<td>Yes</td>
+<td>Name of the cube to drill through. This cube must exist inside the specified <code>server</code>.</td>
+<td>- <code>cube=Input%20Cube</code> <br> - <code>cube=plan_BudgetPlan</code></td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>dtType</td>
+<td>Yes</td>
+<td>The drill through type.</td>
+<td>- <code>dtType=Cube</code></td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>dtScript</td>
+<td>Yes</td>
+<td>Name of the drill through script.</td>
+<td>- <code>dtScript=Budget_line_entry</code></td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>dtCellCoord</td>
+<td>Yes</td>
+<td>A comma separated list of target cells.</td>
+<td>- <code>dtCellCoord=Total%20Business%20Unit%2CTotal%20Organization</code> <br> (Decodes to <code>Total Business Unit,Total Organization</code>)</td>
 </tr>
 </tbody></table>
+<h2 id='dimension-editor'>Dimension editor</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>dimension-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit
+</code></pre>
+<p>The follow parameters apply to <code>type=dimension-editor</code>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>Yes</td>
+<td>The type of widget to render (alias <code>Type</code>).</td>
+<td>- <code>type=dimension-editor</code></td>
+</tr>
+<tr>
+<td>server</td>
+<td>Yes</td>
+<td>Name of TM1 server where dimension is located.</td>
+<td>- <code>server=SData</code> <br> - <code>server=Planning%20Sample</code></td>
+</tr>
+<tr>
+<td>dimension</td>
+<td>Yes</td>
+<td>Name of the dimension. This dimension must exist inside the specified <code>server</code>.</td>
+<td>- <code>dimension=region</code> <br> - <code>dimension=plan_version</code></td>
+</tr>
+<tr>
+<td>hierarchy</td>
+<td>No</td>
+<td>Name of the hierarchy of the specified <code>dimension</code>. This hierarchy must exist inside the specified <code>dimension</code>. If not defined, it will default to the same value as <code>dimension</code>.</td>
+<td>- <code>hierarchy=ManufacturingSource</code> <br> - <code>hierarchy=plan_version</code></td>
+</tr>
+</tbody></table>
+<h2 id='set-editor'>Set editor</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span><span class="nb">set</span>-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit&amp;uniqueName<span class="o">=</span>All%20Business%20Units
+</code></pre>
+<p>The follow parameters apply to <code>type=set-editor</code>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>Yes</td>
+<td>The type of widget to render (alias <code>Type</code>).</td>
+<td>- <code>type=set-editor</code></td>
+</tr>
+<tr>
+<td>server</td>
+<td>Yes</td>
+<td>Name of TM1 server where set or subset is located.</td>
+<td>- <code>server=SData</code> <br> - <code>server=Planning%20Sample</code></td>
+</tr>
+<tr>
+<td>cube</td>
+<td>Yes</td>
+<td>Name of cube where view is located. This cube must exist inside the specified <code>server</code>.</td>
+<td>- <code>cube=Input%20Cube</code> <br> - <code>cube=plan_BudgetPlan</code></td>
+</tr>
+<tr>
+<td>dimension</td>
+<td>Yes</td>
+<td>Name of the dimension. This dimension must exist inside the specified <code>server</code>.</td>
+<td>- <code>dimension=region</code> <br> - <code>dimension=plan_version</code></td>
+</tr>
+<tr>
+<td>uniqueName</td>
+<td>Yes</td>
+<td>Unique ID of the set or subset.</td>
+<td>- <code>uniqueName=Europe_all</code> <br> - <code>uniqueName=FY%202004%20Budget</code></td>
+</tr>
+<tr>
+<td>dimensionCaption</td>
+<td>No</td>
+<td>Caption name of the specified <code>dimension</code> (if applicable).</td>
+<td></td>
+</tr>
+<tr>
+<td>hierarchy</td>
+<td>No</td>
+<td>Name of the hierarchy of the specified <code>dimension</code>. This hierarchy must exist inside the specified <code>dimension</code>. If not defined, it will default to the same value as <code>dimension</code>.</td>
+<td>- <code>hierarchy=ManufacturingSource</code> <br> - <code>hierarchy=plan_version</code></td>
+</tr>
+<tr>
+<td>hierarchyCaption</td>
+<td>No</td>
+<td>Caption name of the specified <code>dimension</code> (if applicable).</td>
+<td></td>
+</tr>
+<tr>
+<td>alias</td>
+<td>No</td>
+<td>The alias name for set or subset (if applicable).</td>
+<td></td>
+</tr>
+<tr>
+<td>private</td>
+<td>No</td>
+<td>Whether or not the set or subset is private. Can be either <code>true</code> or <code>false</code>. Defaults to <code>false</code>.</td>
+<td>- <code>private=true</code> <br> - <code>private=false</code></td>
+</tr>
+</tbody></table>
+<h2 id='websheet'>Websheet</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
+</code></pre>
+<p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL Api to render a websheet.</p>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
