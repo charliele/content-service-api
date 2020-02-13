@@ -222,32 +222,10 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#installation" class="toc-h1 toc-link" data-title="Installation">Installation</a>
-          </li>
-          <li>
             <a href="#running-the-application" class="toc-h1 toc-link" data-title="Running the application">Running the application</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#testing-the-application" class="toc-h2 toc-link" data-title="Testing the application">Testing the application</a>
-                  </li>
-              </ul>
           </li>
           <li>
-            <a href="#client-communication" class="toc-h1 toc-link" data-title="Client communication">Client communication</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#purpose" class="toc-h2 toc-link" data-title="Purpose">Purpose</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#sending-messages" class="toc-h1 toc-link" data-title="Sending messages">Sending messages</a>
-          </li>
-          <li>
-            <a href="#receiving-messages" class="toc-h1 toc-link" data-title="Receiving messages">Receiving messages</a>
-          </li>
-          <li>
-            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
+            <a href="#showing-a-widget" class="toc-h1 toc-link" data-title="Showing a widget">Showing a widget</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#syntax" class="toc-h2 toc-link" data-title="Syntax">Syntax</a>
@@ -280,6 +258,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#client-communication" class="toc-h1 toc-link" data-title="Client communication">Client communication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#purpose" class="toc-h2 toc-link" data-title="Purpose">Purpose</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sending-messages" class="toc-h1 toc-link" data-title="Sending messages">Sending messages</a>
+          </li>
+          <li>
+            <a href="#receiving-messages" class="toc-h1 toc-link" data-title="Receiving messages">Receiving messages</a>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -293,7 +285,9 @@
 <p>The IBM Planning Analytics Workspace UI API is used for returning generated Planning Analytics Workspace assets, such as cube views, the dimension editor, the set editor, TM1 views, etc.</p>
 
 <p>The Planning Analytics Workspace UI API is developed and built using the <a href='https://github.com/nestjs/nest'>Nest</a> framework.</p>
-<h1 id='installation'>Installation</h1>
+
+<p>```# Installation</p>
+
 <blockquote>
 <p>To install, use this code:</p>
 </blockquote>
@@ -304,7 +298,7 @@
 <span class="c"># run this if you get "cannot find tsc command" error</span>
 <span class="gp">$ </span>npm install -g typescript 
 </code></pre>
-<p>Install the Planning Analytics Workspace UI API by running these code examples in terminal or commandline.</p>
+<p>```Install the Planning Analytics Workspace UI API by running these code examples in terminal or commandline.</p>
 <h1 id='running-the-application'>Running the application</h1><pre class="highlight shell tab-shell"><code><span class="c"># development</span>
 <span class="gp">$ </span>npm run start
 
@@ -317,8 +311,10 @@
 <span class="c"># production mode</span>
 <span class="gp">$ </span>npm run start-prod
 </code></pre>
-<p>This application will read config values from the environment variables. What I usually do is set my dev env variables in <code>config/set-dev-variables.sh</code> and then run the script via source <code>config/set-dev-variables.sh</code> before running the below to have it run under the specified config variables. Check the <a href='https://github.ibm.com/PlanningAnalytics/paw-ui-api/blob/master/server/modules/config/config.service.ts'>config service</a> to see all available settings.</p>
-<h2 id='testing-the-application'>Testing the application</h2><pre class="highlight shell tab-shell"><code><span class="c"># unit tests</span>
+<p>``<code>This application will read config values from the environment variables. What I usually do is set my dev env variables in</code>config/set-dev-variables.sh<code>and then run the script via source</code>config/set-dev-variables.sh` before running the below to have it run under the specified config variables. Check the <a href='https://github.ibm.com/PlanningAnalytics/paw-ui-api/blob/master/server/modules/config/config.service.ts'>config service</a> to see all available settings.</p>
+
+<p>```## Testing the application</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># unit tests</span>
 <span class="gp">$ </span>npm run <span class="nb">test</span>
 
 <span class="c"># e2e tests</span>
@@ -327,189 +323,8 @@
 <span class="c"># test coverage</span>
 <span class="gp">$ </span>npm run <span class="nb">test</span>:cov
 </code></pre>
-<p>Use these commands to test the application.</p>
-<h1 id='client-communication'>Client communication</h1>
-<p>This section describes how to safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing our UI widget.</p>
-<h2 id='purpose'>Purpose</h2>
-<p>In order for the client to be able to issue commands or respond to specific events regarding to our UI widget, which would usually be contained inside an iframe. The approach here documents a safe method to do this regardless if it is same-origin or cross-origin.</p>
-
-<p>Sending and receiving messages from the client are accomplished using the <code>Window.postMessage API</code>. <a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage'>Here</a> is a link that documents the specifics.</p>
-
-<p>In the code examples shown below, assume this API service is hosted under <code>http://localhost:8080/ui</code>.</p>
-<h1 id='sending-messages'>Sending messages</h1>
-<blockquote>
-<p>Examples:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>var iframe <span class="o">=</span> document.getElementByd<span class="o">(</span><span class="s1">'iframe_id_here'</span><span class="o">)</span>;
-// check <span class="k">if </span>widget is fully loaded before sending message
-// isWidgetReady is <span class="nb">set </span>to <span class="nb">true </span>when client receives the <span class="s2">"onWidgetLoaded"</span> message
-<span class="k">if</span><span class="o">(</span>isWidgetReady <span class="o">&amp;&amp;</span> iframe.contentWindow<span class="o">)</span> <span class="o">{</span>
-    iframe.contentWindow.postMessage<span class="o">({</span>
-        <span class="nb">type</span>: <span class="s2">"trigger"</span>,
-        eventName: <span class="s2">"tm1mdv:Compute"</span>,
-        eventPayload: <span class="o">{</span>
-            userCommand: <span class="nb">true</span>
-        <span class="o">}</span>
-    <span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Subscribes to the commands:completed event under the tm1mdv namespace. Once subscribed, the client will receive messages whenever that event occurs</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
-    <span class="nb">type</span>: <span class="s2">"subscribe"</span>,
-    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
-    eventPayload: <span class="o">{</span>
-        name: <span class="s2">"first subscription"</span>
-    <span class="o">}</span>
-<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
-</code></pre>
-<blockquote>
-<p>Unsubscribes to the event above.</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
-    <span class="nb">type</span>: <span class="s2">"unsubscribe"</span>,
-    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
-    eventPayload: <span class="o">{</span>
-        name: <span class="s2">"first subscription"</span>
-    <span class="o">}</span>
-<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
-</code></pre>
-<p>Here is a list of parameters you may pass in:</p>
-
-<table><thead>
-<tr>
-<th>Parameter name</th>
-<th>Required</th>
-<th>Description</th>
-<th>Examples</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>Yes</td>
-<td>The type of message to send.</td>
-<td>- <code>trigger</code> <br> - <code>subscribe</code></td>
-</tr>
-<tr>
-<td>eventName</td>
-<td>Yes</td>
-<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>. The following namespaces are supported: <code>tm1mdv</code>, <code>glass</code></td>
-<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
-</tr>
-<tr>
-<td>eventPayload</td>
-<td>n/a</td>
-<td>The payload body accompanying the message. The contents and whether or not this parameter is neccessary depends on the type of message.</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Below lists all supported messages the client can send:</p>
-
-<table><thead>
-<tr>
-<th>Message type</th>
-<th>Description</th>
-<th>eventPayload</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>trigger</td>
-<td>Attempts to raise a particular event. Only emits the event for supported namespaces</td>
-<td>Depends on the event. This would contain information needed for the event execution.</td>
-</tr>
-<tr>
-<td>subscribe</td>
-<td>Subscribes to a particular event. Only events in the supported namespaces may be subscribed. Once subscribed, the UI widget will send a message of type <code>on</code> back to the client every time the <code>eventName</code> event occurs.</td>
-<td><code>name</code>: String (Optional). Used to identify subscriptions. <br> - If no name is given, you cannot unsubscribe to the event. <br> - If given name has already been registered, no event is subscribed.</td>
-</tr>
-<tr>
-<td>unsubscribe</td>
-<td>Unsubscribes to a particular event. Only subscriptions with a name can be unsubscribed.</td>
-<td><code>name</code>: String (Required). Used to identify subscriptions. <br> - If no name is given or if there were no previous subscriptions under that name, nothing happens.</td>
-</tr>
-</tbody></table>
-<h1 id='receiving-messages'>Receiving messages</h1>
-<blockquote>
-<p>Examples:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>var widgetReady <span class="o">=</span> <span class="nb">false</span>;
-window.addEventListener<span class="o">(</span><span class="s2">"message"</span>, <span class="k">function</span><span class="o">(</span>event<span class="o">)</span> <span class="o">{</span>
-    // only accept messages sent from the UI widget
-    <span class="k">if</span><span class="o">(</span>event.origin <span class="o">==</span> <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span> <span class="o">{</span>
-        switch<span class="o">(</span>event.data.type<span class="o">)</span> <span class="o">{</span>
-            <span class="k">case</span> <span class="s1">'onWidgetLoaded'</span>:
-                widgetReady <span class="o">=</span> <span class="nb">true</span>;
-                <span class="nb">break</span>;
-            <span class="k">case</span> <span class="s1">'on'</span>:
-                handleEvent<span class="o">(</span>event.data.eventName, event.data.eventPayload<span class="p">)</span>;
-                <span class="nb">break</span>;
-            default:
-                <span class="nb">break</span>;
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">})</span>;
-</code></pre>
-<blockquote>
-<p>Receiving an <code>on</code> message that indicated the <code>tm1mdv:commands:completed</code> event had occured</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="k">function </span>handleEvent<span class="o">(</span>eventName, eventPayload<span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span><span class="o">(</span>eventName <span class="o">==</span> <span class="s2">"tm1mdv:commands:completed"</span><span class="o">)</span> <span class="o">{</span>
-        // first subscription was just notified!
-        alert<span class="o">(</span>eventPayload.name + <span class="s1">' was just notified!'</span><span class="o">)</span>;
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<table><thead>
-<tr>
-<th>Parameter name</th>
-<th>Required</th>
-<th>Description</th>
-<th>Examples</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>Yes</td>
-<td>The type of message recieved.</td>
-<td>- <code>onWidget:paded</code> <br> - <code>on</code></td>
-</tr>
-<tr>
-<td>eventName</td>
-<td>Yes</td>
-<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>.</td>
-<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
-</tr>
-<tr>
-<td>eventPayload</td>
-<td>n/a</td>
-<td>The payload body accompanying the message. The contents depends on the type of message.</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<p>Below lists all supported messages the client can send:</p>
-
-<table><thead>
-<tr>
-<th>Message type</th>
-<th>Description</th>
-<th>eventPayload</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>onWidgetLoaded</td>
-<td>Used to notify to the client that the UI widget has been fully rendered and can safely be interacted with.</td>
-<td>None</td>
-</tr>
-<tr>
-<td>on</td>
-<td>Used to notify to the client that one of their subscribed events has occurred.</td>
-<td>This will contain more information about the context of the event that occurred.</td>
-</tr>
-</tbody></table>
-<h1 id='endpoints'>Endpoints</h1>
+<p>```Use these commands to test the application.</p>
+<h1 id='showing-a-widget'>Showing a widget</h1>
 <p>An endpoint returns an html page that renders a PAW book, a PAW view, a TM1 legacy view, a drill through view, a dimension editor, a set editor, or websheet.</p>
 <h2 id='syntax'>Syntax</h2>
 <blockquote>
@@ -847,6 +662,187 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
 </code></pre>
 <p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL Api to render a websheet.</p>
+<h1 id='client-communication'>Client communication</h1>
+<p>This section describes how to safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing our UI widget.</p>
+<h2 id='purpose'>Purpose</h2>
+<p>In order for the client to be able to issue commands or respond to specific events regarding to our UI widget, which would usually be contained inside an iframe. The approach here documents a safe method to do this regardless if it is same-origin or cross-origin.</p>
+
+<p>Sending and receiving messages from the client are accomplished using the <code>Window.postMessage API</code>. <a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage'>Here</a> is a link that documents the specifics.</p>
+
+<p>In the code examples shown below, assume this API service is hosted under <code>http://localhost:8080/ui</code>.</p>
+<h1 id='sending-messages'>Sending messages</h1>
+<blockquote>
+<p>Examples:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>var iframe <span class="o">=</span> document.getElementByd<span class="o">(</span><span class="s1">'iframe_id_here'</span><span class="o">)</span>;
+// check <span class="k">if </span>widget is fully loaded before sending message
+// isWidgetReady is <span class="nb">set </span>to <span class="nb">true </span>when client receives the <span class="s2">"onWidgetLoaded"</span> message
+<span class="k">if</span><span class="o">(</span>isWidgetReady <span class="o">&amp;&amp;</span> iframe.contentWindow<span class="o">)</span> <span class="o">{</span>
+    iframe.contentWindow.postMessage<span class="o">({</span>
+        <span class="nb">type</span>: <span class="s2">"trigger"</span>,
+        eventName: <span class="s2">"tm1mdv:Compute"</span>,
+        eventPayload: <span class="o">{</span>
+            userCommand: <span class="nb">true</span>
+        <span class="o">}</span>
+    <span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Subscribes to the commands:completed event under the tm1mdv namespace. Once subscribed, the client will receive messages whenever that event occurs</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
+    <span class="nb">type</span>: <span class="s2">"subscribe"</span>,
+    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
+    eventPayload: <span class="o">{</span>
+        name: <span class="s2">"first subscription"</span>
+    <span class="o">}</span>
+<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+</code></pre>
+<blockquote>
+<p>Unsubscribes to the event above.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
+    <span class="nb">type</span>: <span class="s2">"unsubscribe"</span>,
+    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
+    eventPayload: <span class="o">{</span>
+        name: <span class="s2">"first subscription"</span>
+    <span class="o">}</span>
+<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+</code></pre>
+<p>Here is a list of parameters you may pass in:</p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>Yes</td>
+<td>The type of message to send.</td>
+<td>- <code>trigger</code> <br> - <code>subscribe</code></td>
+</tr>
+<tr>
+<td>eventName</td>
+<td>Yes</td>
+<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>. The following namespaces are supported: <code>tm1mdv</code>, <code>glass</code></td>
+<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
+</tr>
+<tr>
+<td>eventPayload</td>
+<td>n/a</td>
+<td>The payload body accompanying the message. The contents and whether or not this parameter is neccessary depends on the type of message.</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>Below lists all supported messages the client can send:</p>
+
+<table><thead>
+<tr>
+<th>Message type</th>
+<th>Description</th>
+<th>eventPayload</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trigger</td>
+<td>Attempts to raise a particular event. Only emits the event for supported namespaces</td>
+<td>Depends on the event. This would contain information needed for the event execution.</td>
+</tr>
+<tr>
+<td>subscribe</td>
+<td>Subscribes to a particular event. Only events in the supported namespaces may be subscribed. Once subscribed, the UI widget will send a message of type <code>on</code> back to the client every time the <code>eventName</code> event occurs.</td>
+<td><code>name</code>: String (Optional). Used to identify subscriptions. <br> - If no name is given, you cannot unsubscribe to the event. <br> - If given name has already been registered, no event is subscribed.</td>
+</tr>
+<tr>
+<td>unsubscribe</td>
+<td>Unsubscribes to a particular event. Only subscriptions with a name can be unsubscribed.</td>
+<td><code>name</code>: String (Required). Used to identify subscriptions. <br> - If no name is given or if there were no previous subscriptions under that name, nothing happens.</td>
+</tr>
+</tbody></table>
+<h1 id='receiving-messages'>Receiving messages</h1>
+<blockquote>
+<p>Examples:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>var widgetReady <span class="o">=</span> <span class="nb">false</span>;
+window.addEventListener<span class="o">(</span><span class="s2">"message"</span>, <span class="k">function</span><span class="o">(</span>event<span class="o">)</span> <span class="o">{</span>
+    // only accept messages sent from the UI widget
+    <span class="k">if</span><span class="o">(</span>event.origin <span class="o">==</span> <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span> <span class="o">{</span>
+        switch<span class="o">(</span>event.data.type<span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="s1">'onWidgetLoaded'</span>:
+                widgetReady <span class="o">=</span> <span class="nb">true</span>;
+                <span class="nb">break</span>;
+            <span class="k">case</span> <span class="s1">'on'</span>:
+                handleEvent<span class="o">(</span>event.data.eventName, event.data.eventPayload<span class="p">)</span>;
+                <span class="nb">break</span>;
+            default:
+                <span class="nb">break</span>;
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">})</span>;
+</code></pre>
+<blockquote>
+<p>Receiving an <code>on</code> message that indicated the <code>tm1mdv:commands:completed</code> event had occured</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="k">function </span>handleEvent<span class="o">(</span>eventName, eventPayload<span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span>eventName <span class="o">==</span> <span class="s2">"tm1mdv:commands:completed"</span><span class="o">)</span> <span class="o">{</span>
+        // first subscription was just notified!
+        alert<span class="o">(</span>eventPayload.name + <span class="s1">' was just notified!'</span><span class="o">)</span>;
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Required</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>Yes</td>
+<td>The type of message recieved.</td>
+<td>- <code>onWidget:paded</code> <br> - <code>on</code></td>
+</tr>
+<tr>
+<td>eventName</td>
+<td>Yes</td>
+<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>.</td>
+<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
+</tr>
+<tr>
+<td>eventPayload</td>
+<td>n/a</td>
+<td>The payload body accompanying the message. The contents depends on the type of message.</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>Below lists all supported messages the client can send:</p>
+
+<table><thead>
+<tr>
+<th>Message type</th>
+<th>Description</th>
+<th>eventPayload</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>onWidgetLoaded</td>
+<td>Used to notify to the client that the UI widget has been fully rendered and can safely be interacted with.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>on</td>
+<td>Used to notify to the client that one of their subscribed events has occurred.</td>
+<td>This will contain more information about the context of the event that occurred.</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
