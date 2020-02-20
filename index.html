@@ -257,11 +257,6 @@
           </li>
           <li>
             <a href="#client-communication" class="toc-h1 toc-link" data-title="Client communication">Client communication</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#purpose" class="toc-h2 toc-link" data-title="Purpose">Purpose</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#sending-messages" class="toc-h1 toc-link" data-title="Sending messages">Sending messages</a>
@@ -626,9 +621,13 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 </code></pre>
 <p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL Api to render a websheet.</p>
 <h1 id='client-communication'>Client communication</h1>
-<p>This section describes how to safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing our UI widget.</p>
-<h2 id='purpose'>Purpose</h2>
-<p>In order for the client to be able to issue commands or respond to specific events regarding to our UI widget, which would usually be contained inside an iframe. The approach here documents a safe method to do this regardless if it is same-origin or cross-origin.</p>
+<p>This section describes how to safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing the IBM Planning Analytics Workspace UI widget. Communication between the client and the child dom is required in order for the client to be able to issue commands or respond to specific Planning Analytics Workspace UI widget events.</p>
+
+<p>The Planning Analytics Workspace ui widgets are usually contained inside of an iframe. The approach documented in this section is safe for same-origin and cross-origin communication.</p>
+
+<aside class="notice">
+You can embed the Planning Analytics Workspace UI API in an iframe for Planning Analytics Workspace Local, but you cannot embed the API in an iframe for Planning Analytics Workspace on Cloud. To embed the Planning Analytics Workspace UI API in an iframe for Planning Analytics Workspace Local, you must enable CORS. For more information on how you can enable CORS for Planning Analytics Workspace Local, see <a href='https://www-03preprod.ibm.com/support/knowledgecenter/SSD29G_2.0.0_test/com.ibm.swg.ba.cognos.tm1_inst.2.0.0.doc/c_paw_config_file.html'>Configure parameters</a>.
+</aside>
 
 <p>Sending and receiving messages from the client are accomplished using the <code>Window.postMessage API</code>. <a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage'>Here</a> is a link that documents the specifics.</p>
 
