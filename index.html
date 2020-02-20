@@ -283,7 +283,7 @@
 
 <p> </p>
 <h1 id='showing-a-widget'>Showing a widget</h1>
-<p>An endpoint returns an html page that renders a PAW book, a PAW view, a TM1 legacy view, a drill through view, a dimension editor, a set editor, or websheet.</p>
+<p>You can use an endpoint to return an HTML page that renders a Planning Analytics Workspace book, a Planning Analytics Workspace view, a TM1 legacy view, a drill through view, a dimension editor, a set editor, or a websheet.</p>
 <h2 id='syntax'>Syntax</h2>
 <blockquote>
 <p>Example:</p>
@@ -619,7 +619,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 </blockquote>
 <pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
 </code></pre>
-<p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL Api to render a websheet.</p>
+<p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL API to render a websheet.</p>
 <h1 id='client-communication'>Client communication</h1>
 <p>This section describes how to safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing the IBM Planning Analytics Workspace UI widget. Communication between the client and the child dom is required in order for the client to be able to issue commands or respond to specific Planning Analytics Workspace UI widget events.</p>
 
@@ -677,7 +677,7 @@ You can embed the Planning Analytics Workspace UI API in an iframe for Planning 
     eventName: <span class="s1">'tm1mdv:redraw'</span>
 <span class="o">}</span>, apiOrigin<span class="o">)</span>;
 </code></pre>
-<p>Here is a list of parameters you may pass in:</p>
+<p>Here is a list of parameters that can be passed in:</p>
 
 <table><thead>
 <tr>
