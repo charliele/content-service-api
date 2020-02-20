@@ -269,6 +269,9 @@
           <li>
             <a href="#receiving-messages" class="toc-h1 toc-link" data-title="Receiving messages">Receiving messages</a>
           </li>
+          <li>
+            <a href="#html-example" class="toc-h1 toc-link" data-title="HTML example">HTML example</a>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -282,13 +285,15 @@
 <p>The IBM Planning Analytics Workspace UI API is used for returning generated Planning Analytics Workspace assets, such as cube views, the dimension editor, the set editor, TM1 views, etc.</p>
 
 <p>The Planning Analytics Workspace UI API is developed and built using the <a href='https://github.com/nestjs/nest'>Nest</a> framework.</p>
+
+<p> </p>
 <h1 id='showing-a-widget'>Showing a widget</h1>
 <p>An endpoint returns an html page that renders a PAW book, a PAW view, a TM1 legacy view, a drill through view, a dimension editor, a set editor, or websheet.</p>
 <h2 id='syntax'>Syntax</h2>
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>localhost:8080/ui?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
 </code></pre>
 <p>Method: <code>GET</code></p>
 
@@ -310,7 +315,7 @@
 <li><code>200 OK</code> on success. Response body contains an HTML page that can be put into an iframe. This page will automatically load the requested widget.</li>
 </ul>
 <h1 id='parameters'>Parameters</h1>
-<p>The <code>type</code> (alias <code>Type</code>) parameter determines what kind of widget or asset to render. Each type requires a different set of parameters. See below for a case-by-case list. In the example URLs given below, we assume the service is located at <code>http://localhost:8080/ui</code>.</p>
+<p>The <code>type</code> (alias <code>Type</code>) parameter determines what kind of widget or asset to render. Each type requires a different set of parameters. See below for a case-by-case list.</p>
 
 <aside class="notice">
 All parameters are case sensitive.
@@ -319,7 +324,7 @@ All parameters are case sensitive.
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>book&amp;path<span class="o">=</span>/shared/myBook1
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>book&amp;path<span class="o">=</span>/shared/myBook1
 </code></pre>
 <p>The follow parameters apply to <code>type=book</code>.</p>
 
@@ -348,7 +353,7 @@ All parameters are case sensitive.
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
 </code></pre>
 <p>The follow parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
 
@@ -389,7 +394,7 @@ All parameters are case sensitive.
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>cube-viewer&amp;path<span class="o">=</span>/shared/ABC/KamView
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>cube-viewer&amp;path<span class="o">=</span>/shared/ABC/KamView
 </code></pre>
 <p>The follow parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
 
@@ -446,7 +451,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>drill-through&amp;server<span class="o">=</span>Planning%20Sample&amp;dtCube<span class="o">=</span>plan_BudgetPlan&amp;dtType<span class="o">=</span>Cube&amp;dtScript<span class="o">=</span>Budget_line_entry&amp;dtCellCoord<span class="o">=</span>FY%202004%20Budget,Total%20Business%20Unit,Total%20Organization,Sales,local%20exchange%20rate,Account%20Level%20Input,Q1-2004
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>drill-through&amp;server<span class="o">=</span>Planning%20Sample&amp;dtCube<span class="o">=</span>plan_BudgetPlan&amp;dtType<span class="o">=</span>Cube&amp;dtScript<span class="o">=</span>Budget_line_entry&amp;dtCellCoord<span class="o">=</span>FY%202004%20Budget,Total%20Business%20Unit,Total%20Organization,Sales,local%20exchange%20rate,Account%20Level%20Input,Q1-2004
 </code></pre>
 <p>The follow parameters apply to <code>type=drill-through</code>.</p>
 
@@ -499,7 +504,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>dimension-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>dimension-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit
 </code></pre>
 <p>The follow parameters apply to <code>type=dimension-editor</code>.</p>
 
@@ -540,7 +545,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span><span class="nb">set</span>-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit&amp;uniqueName<span class="o">=</span>All%20Business%20Units
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span><span class="nb">set</span>-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit&amp;uniqueName<span class="o">=</span>All%20Business%20Units
 </code></pre>
 <p>The follow parameters apply to <code>type=set-editor</code>.</p>
 
@@ -617,7 +622,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>http://localhost:8080/ui?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
 </code></pre>
 <p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL Api to render a websheet.</p>
 <h1 id='client-communication'>Client communication</h1>
@@ -627,7 +632,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 
 <p>Sending and receiving messages from the client are accomplished using the <code>Window.postMessage API</code>. <a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage'>Here</a> is a link that documents the specifics.</p>
 
-<p>In the code examples shown below, assume this API service is hosted under <code>http://localhost:8080/ui</code>.</p>
+<p>In the code examples shown below, replace <code>&lt;production url&gt;</code> with your production URL.</p>
 <h1 id='sending-messages'>Sending messages</h1>
 <blockquote>
 <p>Examples:</p>
@@ -637,35 +642,41 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 // isWidgetReady is <span class="nb">set </span>to <span class="nb">true </span>when client receives the <span class="s2">"onWidgetLoaded"</span> message
 <span class="k">if</span><span class="o">(</span>isWidgetReady <span class="o">&amp;&amp;</span> iframe.contentWindow<span class="o">)</span> <span class="o">{</span>
     iframe.contentWindow.postMessage<span class="o">({</span>
-        <span class="nb">type</span>: <span class="s2">"trigger"</span>,
-        eventName: <span class="s2">"tm1mdv:Compute"</span>,
-        eventPayload: <span class="o">{</span>
-            userCommand: <span class="nb">true</span>
-        <span class="o">}</span>
-    <span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+        <span class="nb">type</span>: <span class="s2">"execute"</span>,
+        eventName: <span class="s2">"Compute"</span>,
+        eventPayload: <span class="o">{}</span>
+    <span class="o">}</span>, <span class="s2">"&lt;production url&gt;"</span><span class="o">)</span>;
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Subscribes to the commands:completed event under the tm1mdv namespace. Once subscribed, the client will receive messages whenever that event occurs</p>
+<p>Subscribes to the tm1mdv:executeCommand event. Once subscribed, the client will receive messages whenever that event occurs</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
     <span class="nb">type</span>: <span class="s2">"subscribe"</span>,
-    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
+    eventName: <span class="s2">"tm1mdv:executeCommand"</span>,
     eventPayload: <span class="o">{</span>
         name: <span class="s2">"first subscription"</span>
     <span class="o">}</span>
-<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+<span class="o">}</span>, <span class="s2">"&lt;production url&gt;"</span><span class="o">)</span>;
 </code></pre>
 <blockquote>
 <p>Unsubscribes to the event above.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
     <span class="nb">type</span>: <span class="s2">"unsubscribe"</span>,
-    eventName: <span class="s2">"tm1mdv:commands:completed"</span>,
+    eventName: <span class="s2">"tm1mdv:executeCommand"</span>,
     eventPayload: <span class="o">{</span>
         name: <span class="s2">"first subscription"</span>
     <span class="o">}</span>
-<span class="o">}</span>, <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span>;
+<span class="o">}</span>, <span class="s2">"&lt;production url&gt;"</span><span class="o">)</span>;
+</code></pre>
+<blockquote>
+<p>Triggers an redraw event.</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>iframe.contentWindow.postMessage<span class="o">({</span>
+    <span class="nb">type</span>: <span class="s1">'trigger'</span>,
+    eventName: <span class="s1">'tm1mdv:redraw'</span>
+<span class="o">}</span>, apiOrigin<span class="o">)</span>;
 </code></pre>
 <p>Here is a list of parameters you may pass in:</p>
 
@@ -681,19 +692,19 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <td>type</td>
 <td>Yes</td>
 <td>The type of message to send.</td>
-<td>- <code>trigger</code> <br> - <code>subscribe</code></td>
+<td>- <code>trigger</code> <br> - <code>subscribe</code> <br> - <code>unsubscribe</code> <br> - <code>execute</code></td>
 </tr>
 <tr>
 <td>eventName</td>
 <td>Yes</td>
-<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>. The following namespaces are supported: <code>tm1mdv</code>, <code>glass</code></td>
-<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
+<td>The full name of the event.</td>
+<td>- <code>tm1mdv:executeCommand</code> <br> - <code>tm1mdv:memberSelect</code> <br> - <code>Compute</code></td>
 </tr>
 <tr>
 <td>eventPayload</td>
 <td>n/a</td>
-<td>The payload body accompanying the message. The contents and whether or not this parameter is neccessary depends on the type of message.</td>
-<td></td>
+<td>The payload body accompanying the message. The contents and whether or not this parameter is neccessary depends on the type of message. This must be an object in the following format: <code>{ k1: v1, k2: v2, ..., kn: vn }</code></td>
+<td>- <code>{ name: &#39;myEventNickname&#39; }</code> <br> - <code>{ selectedSet: &#39;Default&#39; }</code></td>
 </tr>
 </tbody></table>
 
@@ -708,18 +719,23 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 </thead><tbody>
 <tr>
 <td>trigger</td>
-<td>Attempts to raise a particular event. Only emits the event for supported namespaces</td>
+<td>Attempts to raise a particular event. The widget may or may not respond, depending on whether or not it is listening for this event name.</td>
 <td>Depends on the event. This would contain information needed for the event execution.</td>
 </tr>
 <tr>
+<td>execute</td>
+<td>Attempts to execute a command on the widget. This is an alias to the <code>trigger</code> message type and is provided as a convienence. This is equivalent to sending <code>type=trigger</code> and <code>eventPayload={commandName: &lt;command_name&gt;, commandArgs: { ... }}</code>.</td>
+<td>Depends on the command. This would contain information needed to successfully execute the command.</td>
+</tr>
+<tr>
 <td>subscribe</td>
-<td>Subscribes to a particular event. Only events in the supported namespaces may be subscribed. Once subscribed, the UI widget will send a message of type <code>on</code> back to the client every time the <code>eventName</code> event occurs.</td>
-<td><code>name</code>: String (Optional). Used to identify subscriptions. <br> - If no name is given, you cannot unsubscribe to the event. <br> - If given name has already been registered, no event is subscribed.</td>
+<td>Subscribes to a particular event. Once subscribed, the widget will send an <code>on</code> message back to the client every time the <code>eventName</code> event occurs.</td>
+<td><code>name</code>: String (Required). Used to identify subscriptions. <br> - If the given name has already been registered, nothing happens.</td>
 </tr>
 <tr>
 <td>unsubscribe</td>
 <td>Unsubscribes to a particular event. Only subscriptions with a name can be unsubscribed.</td>
-<td><code>name</code>: String (Required). Used to identify subscriptions. <br> - If no name is given or if there were no previous subscriptions under that name, nothing happens.</td>
+<td><code>name</code>: String (Required). Used to identify subscriptions.  <br> - If no name is given or if there were no previous subscriptions under that name, nothing happens.</td>
 </tr>
 </tbody></table>
 <h1 id='receiving-messages'>Receiving messages</h1>
@@ -729,7 +745,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <pre class="highlight shell tab-shell"><code>var widgetReady <span class="o">=</span> <span class="nb">false</span>;
 window.addEventListener<span class="o">(</span><span class="s2">"message"</span>, <span class="k">function</span><span class="o">(</span>event<span class="o">)</span> <span class="o">{</span>
     // only accept messages sent from the UI widget
-    <span class="k">if</span><span class="o">(</span>event.origin <span class="o">==</span> <span class="s2">"http://localhost:8080/ui"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span>event.origin <span class="o">==</span> <span class="s2">"&lt;production url&gt;"</span><span class="o">)</span> <span class="o">{</span>
         switch<span class="o">(</span>event.data.type<span class="o">)</span> <span class="o">{</span>
             <span class="k">case</span> <span class="s1">'onWidgetLoaded'</span>:
                 widgetReady <span class="o">=</span> <span class="nb">true</span>;
@@ -744,15 +760,17 @@ window.addEventListener<span class="o">(</span><span class="s2">"message"</span>
 <span class="o">})</span>;
 </code></pre>
 <blockquote>
-<p>Receiving an <code>on</code> message that indicated the <code>tm1mdv:commands:completed</code> event had occured</p>
+<p>Receiving an <code>on</code> message that indicated that the <code>tm1mdv:executeCommand</code> event had occured</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="k">function </span>handleEvent<span class="o">(</span>eventName, eventPayload<span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span><span class="o">(</span>eventName <span class="o">==</span> <span class="s2">"tm1mdv:commands:completed"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span>eventName <span class="o">==</span> <span class="s2">"tm1mdv:executeCommand"</span><span class="o">)</span> <span class="o">{</span>
         // first subscription was just notified!
         alert<span class="o">(</span>eventPayload.name + <span class="s1">' was just notified!'</span><span class="o">)</span>;
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<p>You can find the specifications for the <code>event</code> object in the Window.postMessage API. Here is a list of parameters under the <code>event.data</code> object:</p>
+
 <table><thead>
 <tr>
 <th>Parameter name</th>
@@ -765,23 +783,23 @@ window.addEventListener<span class="o">(</span><span class="s2">"message"</span>
 <td>type</td>
 <td>Yes</td>
 <td>The type of message recieved.</td>
-<td>- <code>onWidget:paded</code> <br> - <code>on</code></td>
+<td>- <code>onWidgetLoaded</code> <br> - <code>on</code></td>
 </tr>
 <tr>
 <td>eventName</td>
 <td>Yes</td>
-<td>The full name of the event. This parameter should be in the format <code>&lt;namespace&gt;:&lt;event_name&gt;</code>.</td>
-<td>- <code>tm1mdv:Compute</code> <br> - <code>tm1mdv:commands:completed</code></td>
+<td>The full name of the event.</td>
+<td>- <code>tm1mdv:executeCommand</code> <br> - <code>tm1mdv:redraw</code> <br> - <code>tm1mdv:memberSelect</code></td>
 </tr>
 <tr>
 <td>eventPayload</td>
 <td>n/a</td>
-<td>The payload body accompanying the message. The contents depends on the type of message.</td>
-<td></td>
+<td>The payload body accompanying the message. The contents depends on the type of message. All payloads contain a <code>name</code> and <code>parentStore</code> properties.</td>
+<td>- <code>{ name: &#39;first subscription&#39;, parentStore: { ... }, ... }</code></td>
 </tr>
 </tbody></table>
 
-<p>Below lists all supported messages the client can send:</p>
+<p>Below lists all supported messages that the client can send:</p>
 
 <table><thead>
 <tr>
@@ -801,7 +819,115 @@ window.addEventListener<span class="o">(</span><span class="s2">"message"</span>
 <td>This will contain more information about the context of the event that occurred.</td>
 </tr>
 </tbody></table>
+<h1 id='html-example'>HTML example</h1>
+<blockquote>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+        <span class="nc">.vertical</span> <span class="p">{</span> <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span> <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span> <span class="p">}</span>
+        <span class="nc">.vertical-fill</span> <span class="p">{</span> <span class="nl">flex-grow</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span> <span class="p">}</span>
+        <span class="nt">div</span><span class="nf">#headerContent</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span> <span class="p">}</span>
+        <span class="nt">div</span><span class="nf">#headerContent</span> <span class="nt">button</span> <span class="p">{</span> <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span> <span class="p">}</span>
+        <span class="nt">div</span><span class="nf">#widgetContent</span> <span class="nt">iframe</span><span class="nf">#widget</span> <span class="p">{</span> <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="kd">var</span> <span class="nx">API_URL</span> <span class="o">=</span> <span class="s1">'&lt;production url&gt;'</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">IS_WIDGET_READY</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">iframe</span><span class="p">;</span>
 
+        <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'widget'</span><span class="p">);</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// only accept messages sent from the API service</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">origin</span> <span class="o">==</span> <span class="nx">API_URL</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">switch</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">case</span> <span class="s1">'onWidgetLoaded'</span><span class="p">:</span>
+                            <span class="nx">IS_WIDGET_READY</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="k">case</span> <span class="s1">'on'</span><span class="p">:</span>
+                            <span class="nx">handleEvent</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">eventName</span><span class="p">,</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">eventPayload</span><span class="p">);</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="nl">default</span><span class="p">:</span>
+                            <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">handleEvent</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="s1">'event "'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">'" had occurred: '</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">payload</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">loadIframe</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">API_URL</span> <span class="o">+</span> 
+                        <span class="s1">'/ui/'</span> <span class="o">+</span>
+                        <span class="s1">'?type=cube-viewer'</span> <span class="o">+</span>
+                        <span class="s1">'&amp;server=Planning%20Sample'</span> <span class="o">+</span>
+                        <span class="s1">'&amp;cube=plan_BudgetPlan'</span> <span class="o">+</span>
+                        <span class="s1">'&amp;view=Budget%20Input%20Detailed'</span><span class="p">;</span>
+            <span class="nx">iframe</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">isWidgetReady</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">IS_WIDGET_READY</span> <span class="o">&amp;&amp;</span> <span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">redraw</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">isWidgetReady</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+                    <span class="na">type</span><span class="p">:</span> <span class="s1">'trigger'</span><span class="p">,</span>
+                    <span class="na">eventName</span><span class="p">:</span> <span class="s1">'tm1mdv:redraw'</span>
+                <span class="p">},</span> <span class="nx">API_URL</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">swapAxes</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">isWidgetReady</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+                    <span class="na">type</span><span class="p">:</span> <span class="s1">'execute'</span><span class="p">,</span>
+                    <span class="na">eventName</span><span class="p">:</span> <span class="s1">'SwapAxes'</span>
+                <span class="p">},</span> <span class="nx">API_URL</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">subscribe</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">isWidgetReady</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+                    <span class="na">type</span><span class="p">:</span> <span class="s1">'subscribe'</span><span class="p">,</span>
+                    <span class="na">eventName</span><span class="p">:</span> <span class="s1">'tm1mdv:executeCommand'</span><span class="p">,</span>
+                    <span class="na">eventPayload</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">name</span><span class="p">:</span> <span class="s1">'commandsCompleted'</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> <span class="nx">API_URL</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">unsubscribe</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">isWidgetReady</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nx">iframe</span><span class="p">.</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+                    <span class="na">type</span><span class="p">:</span> <span class="s1">'unsubscribe'</span><span class="p">,</span>
+                    <span class="na">eventName</span><span class="p">:</span> <span class="s1">'tm1mdv:executeCommand'</span><span class="p">,</span>
+                    <span class="na">eventPayload</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">name</span><span class="p">:</span> <span class="s1">'commandsCompleted'</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> <span class="nx">API_URL</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"headerContent"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"loadIframe()"</span><span class="nt">&gt;</span>Render iframe<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"redraw()"</span><span class="nt">&gt;</span>Trigger redraw event<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"swapAxes()"</span><span class="nt">&gt;</span>Execute swap axis<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"subscribe()"</span><span class="nt">&gt;</span>Subscribe to "tm1mdv:executeCommand"<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"unsubscribe()"</span><span class="nt">&gt;</span>Unsubscribe to "tm1mdv:executeCommand"<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"widgetContent"</span> <span class="na">class=</span><span class="s">"vertical vertical-fill"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;iframe</span> <span class="na">id=</span><span class="s">"widget"</span> <span class="na">class=</span><span class="s">"vertical-fill"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
