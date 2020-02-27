@@ -288,7 +288,7 @@
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
 </code></pre>
 <p>Method: <code>GET</code></p>
 
@@ -300,9 +300,9 @@
 </ul>
 
 <p>All parameters can be passed as either a query or fragment parameter (they would be processed the same way). This allows for flexibility on how you want to structure your request. So the following requests are all equivalent:
-* <code>/?type=cube-viewer&amp;server=Planning%20Sample&amp;cube=plan_BudgetPlan</code>
-* <code>/#type=cube-viewer&amp;server=Planning%20Sample&amp;cube=plan_BudgetPlan</code>
-* <code>/?type=cube-viewer#server=Planning%20Sample&amp;cube=plan_BudgetPlan</code></p>
+*<code>/?type=cube-viewer&amp;server=Planning%20Sample&amp;cube=plan_BudgetPlan</code>
+*<code>/#type=cube-viewer&amp;server=Planning%20Sample&amp;cube=plan_BudgetPlan</code>
+*<code>/?type=cube-viewer#server=Planning%20Sample&amp;cube=plan_BudgetPlan</code></p>
 
 <p>Returns:</p>
 
@@ -319,7 +319,7 @@ All parameters are case sensitive.
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>book&amp;path<span class="o">=</span>/shared/myBook1
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>book&amp;path<span class="o">=</span>/shared/myBook1
 </code></pre>
 <p>The follow parameters apply to <code>type=book</code>.</p>
 
@@ -348,7 +348,7 @@ All parameters are case sensitive.
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>cube-viewer&amp;server<span class="o">=</span>Planning%20Sample&amp;cube<span class="o">=</span>plan_BudgetPlan&amp;view<span class="o">=</span>Budget%20Input%20Detailed
 </code></pre>
 <p>The follow parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
 
@@ -389,7 +389,7 @@ All parameters are case sensitive.
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>cube-viewer&amp;path<span class="o">=</span>/shared/ABC/KamView
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>cube-viewer&amp;path<span class="o">=</span>/shared/ABC/KamView
 </code></pre>
 <p>The follow parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
 
@@ -438,15 +438,11 @@ All parameters are case sensitive.
 <td>- <code>toolbar=all</code> <br> - <code>toolbar=suppressZero,sandbox,refresh,save</code></td>
 </tr>
 </tbody></table>
-
-<aside class="notice">
-For PAX environments, the `toolbar` paramter needs to be manually set in order to have the `reports` action as the `all` preset does not contain it (to avoid potential confusion in non-PAX environments). For example: `toolbar=reports,save,swapAxes,refresh`.
-</aside>
 <h2 id='drill-through-views'>Drill through views</h2>
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>drill-through&amp;server<span class="o">=</span>Planning%20Sample&amp;dtCube<span class="o">=</span>plan_BudgetPlan&amp;dtType<span class="o">=</span>Cube&amp;dtScript<span class="o">=</span>Budget_line_entry&amp;dtCellCoord<span class="o">=</span>FY%202004%20Budget,Total%20Business%20Unit,Total%20Organization,Sales,local%20exchange%20rate,Account%20Level%20Input,Q1-2004
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>drill-through&amp;server<span class="o">=</span>Planning%20Sample&amp;dtCube<span class="o">=</span>plan_BudgetPlan&amp;dtType<span class="o">=</span>Cube&amp;dtScript<span class="o">=</span>Budget_line_entry&amp;dtCellCoord<span class="o">=</span>FY%202004%20Budget,Total%20Business%20Unit,Total%20Organization,Sales,local%20exchange%20rate,Account%20Level%20Input,Q1-2004
 </code></pre>
 <p>The follow parameters apply to <code>type=drill-through</code>.</p>
 
@@ -499,7 +495,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>dimension-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>dimension-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit
 </code></pre>
 <p>The follow parameters apply to <code>type=dimension-editor</code>.</p>
 
@@ -540,7 +536,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span><span class="nb">set</span>-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit&amp;uniqueName<span class="o">=</span>All%20Business%20Units
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span><span class="nb">set</span>-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit&amp;uniqueName<span class="o">=</span>All%20Business%20Units
 </code></pre>
 <p>The follow parameters apply to <code>type=set-editor</code>.</p>
 
@@ -617,7 +613,7 @@ For PAX environments, the `toolbar` paramter needs to be manually set in order t
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>&lt;production url&gt;?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
+<pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
 </code></pre>
 <p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL API to render a websheet.</p>
 <h1 id='client-communication'>Client communication</h1>
