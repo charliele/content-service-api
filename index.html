@@ -269,15 +269,14 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://www.ibm.com/support/knowledgecenter/SSD29G_2.0.0/com.ibm.swg.ba.cognos.tm1_prism_gs.2.0.0.doc/pa_paw.html'>Planning Analytics Workspace documentation</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>The IBM Planning Analytics Workspace UI API is used for returning generated Planning Analytics Workspace assets, such as cube views, the dimension editor, the set editor, TM1 views, etc.</p>
+<p>Use the IBM Planning Analytics Workspace UI API to return generated Planning Analytics Workspace assets. You can return assets such as cube views, the dimension editor, the set editor, and TM1 views.</p>
 
 <p>The Planning Analytics Workspace UI API is developed and built using the <a href='https://github.com/nestjs/nest'>Nest</a> framework.</p>
 
@@ -294,12 +293,13 @@
 
 <p>URL Format: <code>/?p1=a1&amp;p2=a2&amp;...#f1=a3&amp;f2=a4&amp;...</code></p>
 
-<ul>
-<li>Query parameters: <code>?p1=a1&amp;p2=a2&amp;...</code></li>
-<li>Fragment parameters: <code>#f1=a3&amp;f2=a4&amp;...</code></li>
-</ul>
+<p>Query parameters: <code>?p1=a1&amp;p2=a2&amp;...</code></p>
 
-<p>All parameters can be passed as either a query or fragment parameter (they would be processed the same way). This allows for flexibility on how you want to structure your request. So the following requests are all equivalent:</p>
+<p>Fragment parameters: <code>#f1=a3&amp;f2=a4&amp;...</code></p>
+
+<p>You have flexibility when it comes to how you want to structure your requests. All parameters can be passed as either a query or a fragment parameter. Queries and fragment parameters are processed in the same way. </p>
+
+<p>The following requests are all equivalent:</p>
 
 <ul>
 <li><code>/?type=cube-viewer&amp;server=Planning%20Sample&amp;cube=plan_BudgetPlan</code></li>
@@ -307,13 +307,14 @@
 <li><code>/?type=cube-viewer#server=Planning%20Sample&amp;cube=plan_BudgetPlan</code></li>
 </ul>
 
-<p>Returns:</p>
+<p>All of the above requests will return the following:</p>
 
 <ul>
-<li><code>200 OK</code> on success. Response body contains an HTML page that can be put into an iframe. This page will automatically load the requested widget.</li>
+<li><code>200 OK</code> on success. </li>
+<li>A response body containing an HTML page that can be put into an iframe. The HTML page will automatically load the requested widget.</li>
 </ul>
 <h1 id='parameters'>Parameters</h1>
-<p>The <code>type</code> (alias <code>Type</code>) parameter determines what kind of widget or asset to render. Each type requires a different set of parameters. See below for a case-by-case list.</p>
+<p>The <code>type</code> parameter (alias <code>Type</code>) determines which type of widget or asset to render. Each widget/asset type requires a different set of parameters. Below are the widgets/assets that you can return and the parameters associated with each.</p>
 
 <aside class="notice">
 All parameters are case sensitive.
@@ -378,8 +379,14 @@ All parameters are case sensitive.
 <tr>
 <td>server</td>
 <td>No</td>
-<td>Overrides the TM1 server where view is located. This is useful if you have two different TM1 servers with the same cube views, and have a Planning Analytics Workspace view for one TM1 server, but want to use the other.</td>
+<td>Overrides which TM1 server the view is located in. You can use this parameter if you have multiple TM1 servers with the same cube view; if you have a Planning Analytics Workspace view for one TM1 server, but want to use another TM1 server, you can use the <code>server</code> parameter to define which server to use.</td>
+<td></td>
+</tr>
+<tr>
 <td>- <code>server=Planning_Sample2</code></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>toolbar</td>
@@ -394,7 +401,7 @@ All parameters are case sensitive.
 </blockquote>
 <pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>cube-viewer&amp;path<span class="o">=</span>/shared/ABC/KamView
 </code></pre>
-<p>The follow parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
+<p>The following parameters apply to <code>type=cube-viewer</code> when <code>path</code> is defined.</p>
 
 <table><thead>
 <tr>
@@ -431,13 +438,13 @@ All parameters are case sensitive.
 <tr>
 <td>private</td>
 <td>No</td>
-<td>Whether or not the view is private. Can be either <code>true</code> or <code>false</code>. Defaults to <code>false</code>.</td>
+<td>Defines whether or not the view is private. Can be either <code>true</code> or <code>false</code>. The default is <code>false</code>.</td>
 <td>- <code>private=true</code> <br> - <code>private=false</code></td>
 </tr>
 <tr>
 <td>toolbar</td>
 <td>No</td>
-<td>A comma delimited string of action names to display in the toolbar. The <code>all</code> preset denotes all actions. Defaults to <code>all</code> if this paramter is not provided. Supported actions are as follows: <br>    - <code>export</code> <br>    - <code>save</code> <br>    - <code>swapAxes</code> <br>    - <code>suppressZero</code> <br>    - <code>refresh</code> <br>    - <code>sandbox</code> <br>    - <code>toggleOverview</code> <br> The order in which the actions are shown in the toolbar is the same order specified in this parameter.</td>
+<td>A comma delimited string of action names to display in the toolbar. The <code>all</code> preset denotes all actions. The default is <code>all</code> if this parameter is not defined. Supported actions are as follows: <br>    - <code>export</code> <br>    - <code>save</code> <br>    - <code>swapAxes</code> <br>    - <code>suppressZero</code> <br>    - <code>refresh</code> <br>    - <code>sandbox</code> <br>    - <code>toggleOverview</code> <br> The order that the actions are shown in the toolbar is the same order defined in this parameter.</td>
 <td>- <code>toolbar=all</code> <br> - <code>toolbar=suppressZero,sandbox,refresh,save</code> <br> <img width=400/></td>
 </tr>
 </tbody></table>
@@ -447,7 +454,7 @@ All parameters are case sensitive.
 </blockquote>
 <pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>drill-through&amp;server<span class="o">=</span>Planning%20Sample&amp;dtCube<span class="o">=</span>plan_BudgetPlan&amp;dtType<span class="o">=</span>Cube&amp;dtScript<span class="o">=</span>Budget_line_entry&amp;dtCellCoord<span class="o">=</span>FY%202004%20Budget,Total%20Business%20Unit,Total%20Organization,Sales,local%20exchange%20rate,Account%20Level%20Input,Q1-2004
 </code></pre>
-<p>The follow parameters apply to <code>type=drill-through</code>.</p>
+<p>The following parameters apply to <code>type=drill-through</code>.</p>
 
 <table><thead>
 <tr>
@@ -500,7 +507,7 @@ All parameters are case sensitive.
 </blockquote>
 <pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>dimension-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit
 </code></pre>
-<p>The follow parameters apply to <code>type=dimension-editor</code>.</p>
+<p>The following parameters apply to <code>type=dimension-editor</code>.</p>
 
 <table><thead>
 <tr>
@@ -541,7 +548,7 @@ All parameters are case sensitive.
 </blockquote>
 <pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span><span class="nb">set</span>-editor&amp;server<span class="o">=</span>Planning%20Sample&amp;dimension<span class="o">=</span>plan_business_unit&amp;hierarchy<span class="o">=</span>plan_business_unit&amp;uniqueName<span class="o">=</span>All%20Business%20Units
 </code></pre>
-<p>The follow parameters apply to <code>type=set-editor</code>.</p>
+<p>The following parameters apply to <code>type=set-editor</code>.</p>
 
 <table><thead>
 <tr>
@@ -560,13 +567,13 @@ All parameters are case sensitive.
 <tr>
 <td>server</td>
 <td>Yes</td>
-<td>Name of TM1 server where set or subset is located.</td>
+<td>Name of the TM1 server where the set or subset is located.</td>
 <td>- <code>server=SData</code> <br> - <code>server=Planning%20Sample</code></td>
 </tr>
 <tr>
 <td>cube</td>
 <td>Yes</td>
-<td>Name of cube where view is located. This cube must exist inside the specified <code>server</code>.</td>
+<td>Name of the cube where view is located. This cube must exist inside the specified <code>server</code>.</td>
 <td>- <code>cube=Input%20Cube</code> <br> - <code>cube=plan_BudgetPlan</code></td>
 </tr>
 <tr>
@@ -596,19 +603,19 @@ All parameters are case sensitive.
 <tr>
 <td>hierarchyCaption</td>
 <td>No</td>
-<td>Caption name of the specified <code>dimension</code> (if applicable).</td>
+<td>Caption name for the specified <code>dimension</code> (if applicable).</td>
 <td></td>
 </tr>
 <tr>
 <td>alias</td>
 <td>No</td>
-<td>The alias name for set or subset (if applicable).</td>
+<td>The alias name for the set or subset (if applicable).</td>
 <td></td>
 </tr>
 <tr>
 <td>private</td>
 <td>No</td>
-<td>Whether or not the set or subset is private. Can be either <code>true</code> or <code>false</code>. Defaults to <code>false</code>.</td>
+<td>Defines whether or not the set or subset is private. Can be either <code>true</code> or <code>false</code>. The default is <code>false</code>.</td>
 <td>- <code>private=true</code> <br> - <code>private=false</code> <img width=400/></td>
 </tr>
 </tbody></table>
@@ -618,19 +625,19 @@ All parameters are case sensitive.
 </blockquote>
 <pre class="highlight shell tab-shell"><code>&lt;production url&gt;/ui?type<span class="o">=</span>websheet&amp;Action<span class="o">=</span>Open&amp;Type<span class="o">=</span>WebSheet&amp;Workbook<span class="o">=</span>Applications/Planning%20Sample/Management%20Reporting/Actual%20v%20Budget&amp;AdminHost<span class="o">=</span>localhost&amp;TM1Server<span class="o">=</span>Planning%20Sample
 </code></pre>
-<p>The follow parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL API to render a websheet.</p>
+<p>The following parameters apply to <code>type=websheet</code>. Currently, none of the parameters passed in are changed. The parameters are simply copied when it redirects to the TM1Web URL API to render a websheet.</p>
 <h1 id='client-communication'>Client communication</h1>
-<p>This section describes how to safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing the IBM Planning Analytics Workspace UI widget. Communication between the client and the child dom is required in order for the client to be able to issue commands or respond to specific Planning Analytics Workspace UI widget events.</p>
+<p>You can safely enable cross-origin communication between the parent dom (the &quot;client&quot;) and the child dom containing the IBM Planning Analytics Workspace UI widget. Communication between the client and the child dom is required in order for the client to be able to issue commands or respond to specific Planning Analytics Workspace UI widget events.</p>
 
-<p>The Planning Analytics Workspace ui widgets are usually contained inside of an iframe. The approach documented in this section is safe for same-origin and cross-origin communication.</p>
+<p>The Planning Analytics Workspace UI widgets are usually contained inside of an iframe. The approach documented in this section is safe for same-origin and cross-origin communication.</p>
 
 <aside class="notice">
 You can embed the Planning Analytics Workspace UI API in an iframe for Planning Analytics Workspace Local, but you cannot embed the API in an iframe for Planning Analytics Workspace on Cloud. To embed the Planning Analytics Workspace UI API in an iframe for Planning Analytics Workspace Local, you must enable CORS. For more information on how you can enable CORS for Planning Analytics Workspace Local, see <a href='https://www-03preprod.ibm.com/support/knowledgecenter/SSD29G_2.0.0_test/com.ibm.swg.ba.cognos.tm1_inst.2.0.0.doc/c_paw_config_file.html'>Configure parameters</a>.
 </aside>
 
-<p>Sending and receiving messages from the client are accomplished using the <code>Window.postMessage API</code>. <a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage'>Here</a> is a link that documents the specifics.</p>
+<p>Sending and receiving messages from the client are accomplished using the <code>Window.postMessage</code> API. <a href='https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage'>See this link for more information</a>.</p>
 
-<p>In the code examples shown below, replace <code>&lt;production url&gt;</code> with your production URL.</p>
+<p>In the code examples below, replace <code>&lt;production url&gt;</code> with your own production URL.</p>
 <h1 id='sending-messages'>Sending messages</h1>
 <blockquote>
 <p>Examples:</p>
@@ -676,7 +683,7 @@ You can embed the Planning Analytics Workspace UI API in an iframe for Planning 
     eventName: <span class="s1">'tm1mdv:redraw'</span>
 <span class="o">}</span>, apiOrigin<span class="o">)</span>;
 </code></pre>
-<p>Here is a list of parameters that can be passed in:</p>
+<p>The following is a list of parameters that can be passed in:</p>
 
 <table><thead>
 <tr>
@@ -701,12 +708,12 @@ You can embed the Planning Analytics Workspace UI API in an iframe for Planning 
 <tr>
 <td>eventPayload</td>
 <td>n/a</td>
-<td>The payload body accompanying the message. The contents and whether or not this parameter is neccessary depends on the type of message. This must be an object in the following format: <code>{ k1: v1, k2: v2, ..., kn: vn }</code></td>
+<td>The payload body accompanying the message. The content and whether or not this parameter is required depends on the type of message. This must be an object in the following format: <code>{ k1: v1, k2: v2, ..., kn: vn }</code></td>
 <td>- <code>{ name: &#39;myEventNickname&#39; }</code> <br> - <code>{ selectedSet: &#39;Default&#39; }</code> <img width=500/></td>
 </tr>
 </tbody></table>
 
-<p>Below lists all supported messages the client can send:</p>
+<p>The following is a list of all the supported messages that the client can send:</p>
 
 <table><thead>
 <tr>
@@ -722,7 +729,7 @@ You can embed the Planning Analytics Workspace UI API in an iframe for Planning 
 </tr>
 <tr>
 <td>execute</td>
-<td>Attempts to execute a command on the widget. This is an alias to the <code>trigger</code> message type and is provided as a convienence. This is equivalent to sending <code>type=trigger</code> and <code>eventPayload={commandName: &lt;command_name&gt;, commandArgs: { ... }}</code>.</td>
+<td>Attempts to execute a command on the widget. This is an alias to the <code>trigger</code> message type and is provided as a convenience. This is equivalent to sending <code>type=trigger</code> and <code>eventPayload={commandName: &lt;command_name&gt;, commandArgs: { ... }}</code>.</td>
 <td>Depends on the command. This would contain information needed to successfully execute the command.</td>
 </tr>
 <tr>
@@ -767,7 +774,9 @@ window.addEventListener<span class="o">(</span><span class="s2">"message"</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
-<p>You can find the specifications for the <code>event</code> object in the Window.postMessage API. Here is a list of parameters under the <code>event.data</code> object:</p>
+<p>You can find the specifications for the <code>event</code> object in the <code>Window.postMessage</code> API. </p>
+
+<p>The following is a list of parameters under the <code>event.data</code> object:</p>
 
 <table><thead>
 <tr>
@@ -797,7 +806,7 @@ window.addEventListener<span class="o">(</span><span class="s2">"message"</span>
 </tr>
 </tbody></table>
 
-<p>Below lists all supported messages that the client can send:</p>
+<p>The following is a list of all the supported messages that the client can send:</p>
 
 <table><thead>
 <tr>
